@@ -170,6 +170,13 @@ resource "aws_instance" "my_ec2_instance" {
   }
 }
 
+# Create elastic ip for the instance
+resource "aws_eip" "name" {
+  instance = aws_instance.my_ec2_instance.id
+  vpc = true
+  
+}
+
 # Output vpc id on terminal
 output "vpc_id" {
   value = aws_vpc.new-vpc.id
